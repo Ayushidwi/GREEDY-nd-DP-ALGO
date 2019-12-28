@@ -9,21 +9,17 @@ void findmaxactivity(int s[],int f[],int n)
  {
     if(s[j]>=f[i])
     {
-
-        cout<<j<<endl;
+      cout<<j<<endl;
         i=j;
     }
-
  }
-
-
 }
 
 
 int main()
 {
 int s[]={1,3,0,5,8,5};
-int f[]={2,4,6,7,9,9,};
+int f[]={2,4,6,7,9,9};
 int n=sizeof(s)/sizeof(int);
 findmaxactivity(s,f,n);
 return 0;
