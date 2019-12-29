@@ -1,0 +1,46 @@
+#include <iostream>
+#include<algorithm>
+#include<math.h>
+using namespace std;
+
+bool MyCompare(int a,int b)
+{
+    return a>b;
+}
+int power(int a,int b)
+{
+    //base condition//
+    if(b==0)
+        return 1;
+    //recursive condition//
+    int smallerans=power(a,b/2);
+    smallerans*=smallerans;
+    if(b&1){
+        smallerans= smallerans*a;
+    }
+    return smallerans;
+}
+
+long long int marcCakeWalk(int calorie[],int n)
+{
+  long long int  Min_Miles=0;
+sort(calorie,calorie+n,MyCompare);
+for(int i=0;i<n;i++)
+{
+Min_Miles=Min_Miles+(calorie[i]*power(2,i));
+}
+return Min_Miles;
+}
+
+
+int main()
+{
+int n;
+cin>>n;
+int calorie[n];
+for(int i=0;i<n;i++)
+cin>>calorie[i];
+cout<<marcCakeWalk(calorie,n)<<endl;
+}
+
+
