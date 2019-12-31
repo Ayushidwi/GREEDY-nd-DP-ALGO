@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+int memo[100];
+int maxprofit(int arr[],int n)
+{
+    if(n==0)
+        return 0;
+     if(memo[n]!=-1)
+        return memo[n];
+    int best=0;
+    for(int i=1;i<=n;i++)
+    {
+
+int        total_profit=arr[i]+maxprofit(arr,n-i);
+    best=max(best,total_profit);
+
+    }
+    memo[n]=best;
+    return best;
+}
+
+
+int main()
+{
+
+    int n;
+    cin>>n;
+    int arr[100];
+    for(int i=1;i<=n;i++)
+        cin>>arr[i];
+        for(int i=0;i<=n;i++)
+            memo[i]=-1;
+    int ans=maxprofit(arr,n);
+    cout<<ans<<endl;
+}
